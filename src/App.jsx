@@ -4,12 +4,12 @@ import Loading from './components/loading/Loading';
 
 import "./styles.css";
 
-const debaunce = () => {
+const debaunce = () => { // for suspense view
   return new Promise((resolve) =>{
     const timerId = setTimeout(() => {
       resolve()
       clearTimeout(timerId)
-    }, 1000)
+    }, 0)
   })
 }
 

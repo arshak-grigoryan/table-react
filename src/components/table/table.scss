@@ -25,6 +25,9 @@
       .tr {
           background-color: silver;
           font-weight: bold;
+          .th {
+            text-transform: uppercase
+          }
       }
       @include row()
   }
@@ -61,14 +64,19 @@
     .tr {
         background-color: silver;
         font-weight: bold;
+        .th {
+            text-transform: uppercase
+        }
     }
     @include row();
-    .navigation {
+    .pagination {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         button {
+            border-style: solid;
+            outline: none;
             padding: 5px 10px;
             margin: 10px 5px;
             cursor: pointer;

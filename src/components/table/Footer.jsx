@@ -1,15 +1,12 @@
 import React from "react";
 
+import Pagination from '../pagination/Pagination1';
+
 function Footer({
-    columnsNames, 
-    toPrevious, 
-    toNext, 
-    toFirst, 
-    toLast, 
-    toCurrentPage, 
-    firstPage, 
-    lastPage, 
-    currentPages
+    columnsNames,
+    currentPage,
+    dataLength,
+    onPageChange
 }) {
   
   console.log('render Footer')
@@ -23,19 +20,11 @@ function Footer({
           ))
         }
         </div>
-        <div className='navigation'>
-            <button onClick={toPrevious}>← Previous</button>
-            { currentPages[0] !== firstPage ? <button onClick={toFirst}>{firstPage}</button> : null}
-            { currentPages[0] - firstPage > 1 ? <div>...</div> : null }
-            {
-                currentPages.map((page, i) =>{
-                    return <button key={i} onClick={() => toCurrentPage(page)}>{page}</button>
-                })
-            }
-            { lastPage - currentPages[2] > 1 ? <div>...</div> : null }
-            { currentPages[2] !== lastPage ? <button onClick={toLast}>{lastPage}</button> : null}
-            <button onClick={toNext}>Next →</button>            
-        </div>
+        <Pagination
+          currentPage={currentPage}
+          dataLength={dataLength}
+          onPageChange={onPageChange}
+        />
     </div>
   );
 }
