@@ -20,7 +20,8 @@ function Table({errorMessage}) {
   const [data, setData] = useState([]);
   const [columnsNames, setColumnsNames] = useState([])
   const [visibility, setVisibility] = useState(false)
-  
+  const [error, setError] = useState(false)
+
   const [startRowIndex, setStartRowIndex] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -31,14 +32,14 @@ function Table({errorMessage}) {
     setTimeout(() => { // for Loading view
       (async () => {
         const data = await getData(URL_WRONG)
+        if (!Array.isArray(data)) {
+          setError(true)
+          return
+        }      
         const columnsNames = await getColumnsNames(data, [COLUMS.delete], [COLUMS.userId])
         setData(data)
         setColumnsNames(columnsNames)
-        if (Array.isArray(data)) {
-          setVisibility(true)
-        } else {
-          throw new Error(errorMessage)
-        }
+        setVisibility(true)
       })()
     }, 0)
   })
@@ -71,7 +72,7 @@ function Table({errorMessage}) {
     setCurrentPage(page)
   }
 
-  // if (!visibility) throw new Error(errorMessage)
+  if (error) throw new Error(errorMessage)
 
   console.log('render table')
 
