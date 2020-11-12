@@ -1,4 +1,5 @@
 export const URL = "https://jsonplaceholder.typicode.com/posts";
+export const URL_WRONG = "https://jsonplaceholder.typicode.com/postss";
 export const COLUMS = {
   userId: 'userId',
   id: 'id',

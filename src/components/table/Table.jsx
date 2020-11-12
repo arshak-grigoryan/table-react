@@ -1,9 +1,9 @@
-import React, { useState, } from "react";
+import React, { useEffect, useState, } from "react";
 
 import useMount from '../../hooks/useMount';
 // import useUpdate from '../../hooks/useUpdate';
 
-import {URL, COLUMS, PAGE_ROW_COUNT} from '../../constants/constants';
+import {URL, URL_WRONG, COLUMS, PAGE_ROW_COUNT} from '../../constants/constants';
 
 import getData from '../../fetch/getData';
 import getColumnsNames from './helpers/getColumnsNames';
@@ -16,7 +16,7 @@ import Footer from "./Footer";
 
 import './table.scss';
 
-function Table() {
+function Table({errorMessage}) {
   const [data, setData] = useState([]);
   const [columnsNames, setColumnsNames] = useState([])
   const [visibility, setVisibility] = useState(false)
@@ -30,11 +30,15 @@ function Table() {
   useMount(() => {
     setTimeout(() => { // for Loading view
       (async () => {
-        const data = await getData(URL)
+        const data = await getData(URL_WRONG)
         const columnsNames = await getColumnsNames(data, [COLUMS.delete], [COLUMS.userId])
         setData(data)
         setColumnsNames(columnsNames)
-        setVisibility(true)
+        if (Array.isArray(data)) {
+          setVisibility(true)
+        } else {
+          throw new Error(errorMessage)
+        }
       })()
     }, 0)
   })
@@ -42,7 +46,7 @@ function Table() {
   // useUpdate(() => {
   //   console.log('data', data)
   //   console.log('columns set', columnsNames)
-  // }, [data,columnsNames])
+  // }, [data,columnsNames,])
 
   const deleteItem = itemId => {
     setData(prevData => prevData.filter(({id}) => id !== itemId))
@@ -63,12 +67,14 @@ function Table() {
   }
 
   const onPageChange = (page) => {
-    setStartRowIndex(page * PAGE_ROW_COUNT-PAGE_ROW_COUNT)
+    setStartRowIndex(page * PAGE_ROW_COUNT - PAGE_ROW_COUNT)
     setCurrentPage(page)
   }
 
+  // if (!visibility) throw new Error(errorMessage)
+
   console.log('render table')
-  
+
   return (
     visibility ?
     <div className='table' >
@@ -90,7 +96,7 @@ function Table() {
       />
     </div>
     :
-    <Loading />
+    <Loading/>        
   );
 }
 
