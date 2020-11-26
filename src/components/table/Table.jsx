@@ -31,7 +31,7 @@ function Table({errorMessage}) {
   useMount(() => {
     setTimeout(() => { // for Loading view
       (async () => {
-        const data = await getData(URL_WRONG)
+        const data = await getData(URL)
         if (!Array.isArray(data)) {
           setError(true)
           return

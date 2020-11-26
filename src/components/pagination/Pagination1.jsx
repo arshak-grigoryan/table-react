@@ -8,42 +8,33 @@ function Pagination({
     onPageChange
 }) {
 
-    const lastPage = Math.ceil(dataLength / PAGE_ROW_COUNT)
-    const previousPage = currentPage-1
-    const nextPage = currentPage+1    
-    
-    const pages = (() => {
-        if(dataLength > 4*PAGE_ROW_COUNT) {
-            if(currentPage === 1) {
-                return [currentPage,nextPage,currentPage+2,currentPage+3,currentPage+4]
-            } else if(currentPage === 2) {
-                return [previousPage,currentPage,nextPage,currentPage+2,currentPage+3]
-            } else if(currentPage === lastPage-1) {
-                return [currentPage-3 ,currentPage-2,previousPage,currentPage,nextPage]
-            } else if (currentPage === lastPage) {
-                return [currentPage-4,currentPage-3 ,currentPage-2,previousPage,currentPage,]
-            } else {
-                return [currentPage-2,previousPage,currentPage,nextPage,currentPage+2]
-            }
-        } else if(dataLength > 2*PAGE_ROW_COUNT) {
-            if(currentPage === 1) {
-                return [currentPage,nextPage,currentPage+2]
-            } else if (currentPage === lastPage) {
-                return [currentPage-2,previousPage,currentPage,]
-            } else {
-                return [previousPage,currentPage,nextPage]
-            }
-        } else if (dataLength > PAGE_ROW_COUNT) {
-            if(currentPage === 1) {
-                return [currentPage,nextPage]
-            } else{
-                return [previousPage,currentPage]
-            }
-        } else if (dataLength > 0) {
-            return [currentPage]
-        } else {
-            return []
+    const pageButtonsCount = 5
+    const pageCount = Math.ceil(dataLength / PAGE_ROW_COUNT)
+    const notFull = pageCount < pageButtonsCount
+    const isFromStart = currentPage <= Math.ceil(pageButtonsCount / 2)
+    const isFromEnd = currentPage >= Math.ceil(pageCount - pageButtonsCount / 2)
+
+    const getStartPage = (index, pagePlace) => {
+        if(pagePlace === 'notFull' || pagePlace === 'isFromStart') {
+            return index + 1
         }
+        if(pagePlace === 'isFromEnd') {
+            return index + 1 + pageCount - pageButtonsCount
+        }
+        return index + currentPage - Math.floor(pageButtonsCount / 2)
+    }
+
+    const pages = (() => {
+        if(notFull) {
+            return Array(pageCount).fill(null).map((_, index) => getStartPage(index, 'notFull'))
+        }
+        if(isFromStart) {
+            return Array(pageButtonsCount).fill(null).map((_, index) => getStartPage(index, 'isFromStart'));
+        }
+        if(isFromEnd) {
+            return Array(pageButtonsCount).fill(null).map((_, index) => getStartPage(index, 'isFromEnd'))
+        }
+        return Array(pageButtonsCount).fill(null).map((_, index) => getStartPage(index))
     })()
 
   console.log('render Pagination')
