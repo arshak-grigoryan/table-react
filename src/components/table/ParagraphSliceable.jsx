@@ -1,24 +1,20 @@
-import React from "react";
+import React from 'react';
 
 import useTextSlice from '../../hooks/useTextSlice';
 
-function ParagraphSliceable({string, leng}) {
+function ParagraphSliceable({ string, leng }) {
+  const stringSlice = useTextSlice(string, leng);
 
-  const stringSlice = useTextSlice(string, leng)
-
-  console.log('render ParagraphSliceable')
+  console.log('render ParagraphSliceable');
 
   return (
     <p>
-        {stringSlice.text}
-        {
-            string.length > leng && 
-            <button onClick={stringSlice.onClick}>
-            {
-                stringSlice.isFull ? 'Read less' : 'Read more'
-            }
-            </button>
-        }
+      {stringSlice.text}
+      {string.length > leng && (
+        <button onClick={stringSlice.onClick}>
+          {stringSlice.isFull ? 'Read less' : 'Read more'}
+        </button>
+      )}
     </p>
   );
 }

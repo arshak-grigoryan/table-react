@@ -1,34 +1,35 @@
-import React, { lazy, Suspense } from "react";
-import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
+import React, { lazy, Suspense } from 'react';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 
 import Loading from './components/loading/Loading';
 
-import "./styles.css";
+import './styles.css';
 
-const debaunce = () => { // for suspense view
-  return new Promise((resolve) =>{
+const debaunce = () =>
+  // for suspense view
+  new Promise((resolve) => {
     const timerId = setTimeout(() => {
-      resolve()
-      clearTimeout(timerId)
-    }, 0)
-  })
-}
+      resolve();
+      clearTimeout(timerId);
+    }, 0);
+  });
 
 const Table = lazy(async () => {
-  const result = await Promise.all([import('./components/table/Table'), debaunce()])
-  return result[0]
-})
-
+  const result = await Promise.all([
+    import('./components/table/Table'),
+    debaunce(),
+  ]);
+  return result[0];
+});
 
 export default function App() {
+  console.log('render App');
 
-  console.log('render App')
-  
   return (
     <div className="App">
-      <Suspense fallback={<Loading/>}>
+      <Suspense fallback={<Loading />}>
         <ErrorBoundary fallback={<div>ooooooooooooooooooooooooooooooo</div>}>
-          <Table errorMessage='err appears here'/> 
+          <Table errorMessage="err appears here" />
         </ErrorBoundary>
       </Suspense>
     </div>

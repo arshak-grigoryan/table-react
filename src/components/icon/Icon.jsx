@@ -1,10 +1,9 @@
-import React from "react";
+import React from 'react';
 
-function Icon({type, ...props}) {
-  
-  console.log('render Icon')
+function Icon({ type, ...props }) {
+  console.log('render Icon');
 
-  return <i className={type} {...props}></i>
+  return <i className={type} {...props}></i>;
 }
 
 export default Icon;

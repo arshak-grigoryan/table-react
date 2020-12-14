@@ -1,12 +1,14 @@
-function getColumnsNames(data, includeItems=[], excludeItems=[]) {
-  const columnsSet = new Set()
-  data.map(v => Object.keys(v)).forEach(v => v.forEach(v => columnsSet.add(v)))
-  excludeItems.forEach(v => columnsSet.delete(v))
-  includeItems.forEach(v => columnsSet.add(v))
-  return Promise.resolve(Array.from(columnsSet))
+function getColumnsNames(data, includeItems = [], excludeItems = []) {
+  const columnsSet = new Set();
+  data
+    .map((item) => Object.keys(item))
+    .forEach((val) => val.forEach((v) => columnsSet.add(v)));
+  excludeItems.forEach((v) => columnsSet.delete(v));
+  includeItems.forEach((v) => columnsSet.add(v));
+  return Promise.resolve(Array.from(columnsSet));
 }
 
-export default getColumnsNames
+export default getColumnsNames;
 
 // generic version
 
