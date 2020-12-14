@@ -12,6 +12,8 @@ module.exports = {
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "no-return-assign": "off",
+    "no-console": "off",
+    "import/order": ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}],
     "import/no-extraneous-dependencies": ["warn", { "devDependencies": true }],
   },
   overrides: [
@@ -28,13 +30,7 @@ module.exports = {
     // https://stackoverflow.com/questions/42264007/eslint-errorring-importing-jsx-without-extension
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx",
-          ".json",
-        ]
+        "extensions": [".js",".jsx",".ts",".tsx",".json",]
       }
     }
   }

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { SLICE_LENG, CLASS_NAMES, KEY_CODE } from '../../constants/constants';
 
-import ParagraphSliceable from './ParagraphSliceable';
 import Icon from '../icon/Icon';
+import ParagraphSliceable from './ParagraphSliceable';
 
 function Row({
   // question I know my data structure

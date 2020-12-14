@@ -6,9 +6,8 @@ import useMount from '../../hooks/useMount';
 import { URL, COLUMS, PAGE_ROW_COUNT } from '../../constants/constants';
 
 import getData from '../../fetch/getData';
-import getColumnsNames from './helpers/getColumnsNames';
-
 import Loading from '../loading/Loading';
+import getColumnsNames from './helpers/getColumnsNames';
 
 import Header from './Header';
 import Body from './Body';
