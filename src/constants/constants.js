@@ -7,7 +7,7 @@ export const COLUMS = {
   body: 'body',
   delete: 'delete',
 };
-export const PAGE_ROW_COUNT = 10;
+export const PAGE_ROW_COUNT = 5;
 export const SLICE_LENG = 40;
 export const CLASS_NAMES = {
   edit: 'fas fa-edit',

@@ -3,7 +3,7 @@ import React from 'react';
 import Pagination from '../pagination/Pagination1';
 
 function Footer({ columnsNames, currentPage, dataLength, onPageChange }) {
-  console.log('render Footer');
+  // console.log('render Footer');
 
   return (
     <div className="tfooter">

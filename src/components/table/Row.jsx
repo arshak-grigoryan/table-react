@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-import { SLICE_LENG, CLASS_NAMES, KEY_CODE } from '../../constants/constants';
+import { SLICE_LENG, CLASS_NAMES } from '../../constants/constants';
 
 import Icon from '../icon/Icon';
 import ParagraphSliceable from './ParagraphSliceable';
+import InputEdit from './InputEdit';
 
 function Row({
   // question I know my data structure
@@ -23,14 +24,7 @@ function Row({
 
   const toggleTitle = () => setIsEdit(true);
 
-  const editTitle = (e) => {
-    if (e.which === KEY_CODE.enter || e.keycode === KEY_CODE.enter) {
-      onKeyPressEditTitle(e, id);
-      setIsEdit(false);
-    }
-  };
-
-  console.log('render Row');
+  // console.log('render Row');
 
   return (
     <div className="tr">
@@ -52,7 +46,13 @@ function Row({
               <Icon type={CLASS_NAMES.edit} onClick={toggleTitle} />
             </>
           ) : (
-            <input autoFocus defaultValue={title} onKeyPress={editTitle} />
+            // <input autoFocus defaultValue={title} onKeyPress={editTitle} />
+            <InputEdit
+              id={id}
+              title={title}
+              onKeyPressEditTitle={onKeyPressEditTitle}
+              setIsEdit={setIsEdit}
+            />
           )}
         </div>
       )}

@@ -81,7 +81,7 @@ function Table({ errorMessage }) {
 
   if (error) throw new Error(errorMessage);
 
-  console.log('render table');
+  // console.log('render table');
 
   return visibility ? (
     <div className="table">

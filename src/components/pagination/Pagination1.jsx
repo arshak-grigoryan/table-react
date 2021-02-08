@@ -40,7 +40,7 @@ function Pagination({ dataLength, currentPage, onPageChange }) {
       .map((_, index) => getStartPage(index));
   })();
 
-  console.log('render Pagination');
+  // console.log('render Pagination');
 
   return (
     <div className="pagination">

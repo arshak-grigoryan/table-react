@@ -5,7 +5,7 @@ import useTextSlice from '../../hooks/useTextSlice';
 function ParagraphSliceable({ string, leng }) {
   const stringSlice = useTextSlice(string, leng);
 
-  console.log('render ParagraphSliceable');
+  // console.log('render ParagraphSliceable');
 
   return (
     <p>

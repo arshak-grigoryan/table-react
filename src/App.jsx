@@ -23,7 +23,7 @@ const Table = lazy(async () => {
 });
 
 export default function App() {
-  console.log('render App');
+  // console.log('render App');
 
   return (
     <div className="App">

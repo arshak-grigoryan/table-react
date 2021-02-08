@@ -13,6 +13,7 @@ module.exports = {
     "consistent-return": "off",
     "no-return-assign": "off",
     "no-console": "off",
+    "arrow-body-style": "off",
     "import/order": ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}],
     "import/no-extraneous-dependencies": ["warn", { "devDependencies": true }],
   },

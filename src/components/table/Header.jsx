@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Header({ columnsNames }) {
-  console.log('render Header');
+  // console.log('render Header');
 
   return (
     <div className="thead">
