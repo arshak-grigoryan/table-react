@@ -1,7 +1,8 @@
+/*eslint-disable*/
 import { useEffect } from 'react';
 
 function useMount(effect) {
-    useEffect(effect, [])
+  useEffect(effect, []);
 }
 
-export default useMount
+export default useMount;
