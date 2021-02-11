@@ -1,5 +1,6 @@
 {
-  "name": "table",
+  "name": "table-react",
+  "homepage": "https://arshak-grigoryan.github.io/table-react",
   "version": "1.0.0",
   "description": "",
   "dependencies": {
@@ -12,11 +13,14 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
+    "gh-pages": "^3.1.0",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
