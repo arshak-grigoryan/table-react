@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { PAGE_ROW_COUNT } from '../../constants/constants';
+import { PAGE_ROW_COUNT } from '../../constants';
 
 function Pagination({ dataLength, currentPage, onPageChange }) {
   const pageButtonsCount = 5;

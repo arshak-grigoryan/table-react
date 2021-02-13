@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import useMount from '../../hooks/useMount';
 // import useUpdate from '../../hooks/useUpdate';
 
-import { URL, COLUMS, PAGE_ROW_COUNT } from '../../constants/constants';
+import { URL, COLUMS, PAGE_ROW_COUNT } from '../../constants';
 
-import getData from '../../fetch/getData';
-import Loading from '../loading/Loading';
+import makeFetch from '../../fetch/makeFetch';
+import Loader from '../Loader';
 import getColumnsNames from './helpers/getColumnsNames';
 
 import Header from './Header';
@@ -14,6 +14,8 @@ import Body from './Body';
 import Footer from './Footer';
 
 import './table.scss';
+
+// const Body = lazy(() => import('./Body'));
 
 function Table({ errorMessage }) {
   const [data, setData] = useState([]);
@@ -31,9 +33,9 @@ function Table({ errorMessage }) {
 
   useMount(() => {
     setTimeout(() => {
-      // for Loading view
+      // for Loader view
       (async () => {
-        const res = await getData(URL);
+        const res = await makeFetch(URL);
         if (!Array.isArray(res)) {
           setError(true);
           return;
@@ -101,7 +103,7 @@ function Table({ errorMessage }) {
       />
     </div>
   ) : (
-    <Loading />
+    <Loader />
   );
 }
 

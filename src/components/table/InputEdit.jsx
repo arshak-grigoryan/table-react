@@ -1,4 +1,4 @@
-import { KEY_CODE } from '../../constants/constants';
+import { KEY_CODE } from '../../constants';
 
 import useOutsideClick from '../../hooks/useOutSideClick';
 
@@ -20,7 +20,13 @@ const InputEdit = ({ id, title, onKeyPressEditTitle, setIsEdit }) => {
   // console.log('render InputEdit');
 
   return (
-    <input autoFocus defaultValue={title} onKeyPress={editTitle} ref={ref} />
+    <input
+      autoFocus
+      defaultValue={title}
+      onKeyPress={editTitle}
+      ref={ref}
+      type="textarea"
+    />
   );
 };
 

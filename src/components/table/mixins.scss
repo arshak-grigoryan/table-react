@@ -1,0 +1,58 @@
+@import '../../variables.scss';
+
+@mixin row {
+  display: flex;
+  flex-direction: column;
+  .tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+    .th {
+      color: $headerColor;
+    }
+    .th,
+    .td {
+      padding: $mainPadding;
+      @media (max-width: $breakpoint-sm) {
+        width: 80% !important;
+      }
+      p {
+        margin: 0;
+        text-align: left;
+        font-size: $headerFontSize;
+        .moreless {
+          color: $mainBlue;
+          font-size: $headerFontSize;
+          cursor: pointer;
+          margin-left: $mainPadding / 2;
+          white-space: nowrap;
+        }
+      }
+    }
+    .title,
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+@mixin headerFooter {
+  .thead,
+  .tfooter {
+    .tr {
+      background-color: $headerBgColor;
+      font-weight: bold;
+      .th {
+        text-transform: uppercase;
+        color: $headerColor;
+        font-size: $headerFontSize;
+      }
+    }
+    @include row();
+  }
+}

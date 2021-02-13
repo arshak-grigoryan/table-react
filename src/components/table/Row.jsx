@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { SLICE_LENG, CLASS_NAMES } from '../../constants/constants';
+import { SLICE_LENG } from '../../constants';
 
-import Icon from '../icon/Icon';
 import ParagraphSliceable from './ParagraphSliceable';
 import InputEdit from './InputEdit';
 
 function Row({
-  // question I know my data structure
   userId,
   id,
   title,
@@ -39,14 +39,13 @@ function Row({
         </div>
       )}
       {columnsNames.includes('title') && (
-        <div className="td" style={{ ...style }}>
+        <div className="td title" style={{ ...style }}>
           {!isEdit ? (
             <>
               <ParagraphSliceable string={title} leng={SLICE_LENG} />
-              <Icon type={CLASS_NAMES.edit} onClick={toggleTitle} />
+              <FontAwesomeIcon icon={faEdit} onClick={toggleTitle} />
             </>
           ) : (
-            // <input autoFocus defaultValue={title} onKeyPress={editTitle} />
             <InputEdit
               id={id}
               title={title}
@@ -57,13 +56,13 @@ function Row({
         </div>
       )}
       {columnsNames.includes('body') && (
-        <div className="td" style={{ ...style }}>
+        <div className="td body" style={{ ...style }}>
           <ParagraphSliceable string={body} leng={SLICE_LENG} />
         </div>
       )}
       {columnsNames.includes('delete') && (
         <div className="td" style={{ ...style }}>
-          <Icon type={CLASS_NAMES.delete} onClick={delItem} />
+          <FontAwesomeIcon icon={faTrashAlt} onClick={delItem} />
         </div>
       )}
     </div>

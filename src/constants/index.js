@@ -9,10 +9,6 @@ export const COLUMS = {
 };
 export const PAGE_ROW_COUNT = 5;
 export const SLICE_LENG = 40;
-export const CLASS_NAMES = {
-  edit: 'fas fa-edit',
-  delete: 'fas fa-trash-alt',
-};
 export const KEY_CODE = {
   enter: 13,
 };

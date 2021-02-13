@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 
-import Loading from './components/loading/Loading';
+import Loader from './components/Loader';
 
 import './styles.css';
 
@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loader />}>
         <ErrorBoundary fallback={<div>ooooooooooooooooooooooooooooooo</div>}>
           <Table errorMessage="err appears here" />
         </ErrorBoundary>
