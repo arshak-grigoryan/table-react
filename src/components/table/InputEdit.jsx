@@ -20,7 +20,13 @@ const InputEdit = ({ id, title, onKeyPressEditTitle, setIsEdit }) => {
   // console.log('render InputEdit');
 
   return (
-    <input autoFocus defaultValue={title} onKeyPress={editTitle} ref={ref} />
+    <input
+      autoFocus
+      defaultValue={title}
+      onKeyPress={editTitle}
+      ref={ref}
+      type="textarea"
+    />
   );
 };
 

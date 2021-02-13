@@ -15,6 +15,8 @@ import Footer from './Footer';
 
 import './table.scss';
 
+// const Body = lazy(() => import('./Body'));
+
 function Table({ errorMessage }) {
   const [data, setData] = useState([]);
   const [columnsNames, setColumnsNames] = useState([]);

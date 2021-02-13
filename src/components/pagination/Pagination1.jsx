@@ -2,6 +2,8 @@ import React from 'react';
 
 import { PAGE_ROW_COUNT } from '../../constants/constants';
 
+import './style.scss';
+
 function Pagination({ dataLength, currentPage, onPageChange }) {
   const pageButtonsCount = 5;
   const pageCount = Math.ceil(dataLength / PAGE_ROW_COUNT);

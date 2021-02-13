@@ -1,86 +1,56 @@
-@mixin row {
-  display: flex;
-  flex-direction: column;
-  .tr{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      .th, .td {
-          padding: 20px;
-      }
-      @media (max-width: 500px) {
-          flex-direction: column;
-      }
-  }
-}
+@import './mixins.scss';
 
-.table{
-  width: 80%;
-  min-width: 500px;
-  border: 2px solid silver;
+.table {
+  @media (min-width: $breakpoint-xs) {
+    width: 100%;
+  }
+  @media (min-width: $breakpoint-sm) {
+    width: 90%;
+  }
+  @media (min-width: $breakpoint-md) {
+    width: 80%;
+  }
+  @media (min-width: $breakpoint-lg) {
+    width: 60%;
+  }
+  @media (min-width: $breakpoint-xl) {
+    width: 40%;
+  }
+  min-width: 320px;
+  border: 2px solid $tableBorderColor;
   display: flex;
   flex-direction: column;
   margin: auto;
-  .thead{
-      .tr {
-          background-color: silver;
-          font-weight: bold;
-          .th {
-            text-transform: uppercase
-          }
-      }
-      @include row()
-  }
+  @include headerFooter();
   .tbody {
-      @include row();
-      .tr:nth-child(odd){
-          background-color: rgb(250, 250, 250);
-      }
-      .tr:nth-child(even){
-          background-color: rgb(235, 235, 235);
-      }
-      .tr {
-          .td {
-              P{
-                word-wrap: break-word;
-              }
-              input {
-                  outline: none;
-                  border-style: solid;
-                  &:focus{
-                      border-color: tomato;
-                  }
-              }
-              i {
-                  cursor: pointer;
-                  &:hover{
-                      color: tomato;
-                  }
-              }
-          }
-      }
-  }
-  .tfooter {
-    .tr {
-        background-color: silver;
-        font-weight: bold;
-        .th {
-            text-transform: uppercase
-        }
-    }
     @include row();
-    .pagination {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        button {
-            border-style: solid;
-            outline: none;
-            padding: 5px 10px;
-            margin: 10px 5px;
-            cursor: pointer;
+    .tr:nth-child(odd) {
+      background-color: $oddChildColor;
+    }
+    .tr:nth-child(even) {
+      background-color: $evenChildColor;
+    }
+    .tr {
+      .td {
+        P {
+          word-wrap: break-word;
         }
+        input {
+          outline: none;
+          border-style: solid;
+          &:focus {
+            border-color: $mainRed;
+          }
+        }
+        i {
+          cursor: pointer;
+          color: $mainRed;
+        }
+        .fa-edit {
+          margin-left: 6px;
+          color: $mainBlue;
+        }
+      }
     }
   }
 }

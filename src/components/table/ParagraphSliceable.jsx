@@ -11,9 +11,9 @@ function ParagraphSliceable({ string, leng }) {
     <p>
       {stringSlice.text}
       {string.length > leng && (
-        <button onClick={stringSlice.onClick}>
+        <span onClick={stringSlice.onClick} className="moreless">
           {stringSlice.isFull ? 'Read less' : 'Read more'}
-        </button>
+        </span>
       )}
     </p>
   );
