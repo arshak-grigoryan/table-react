@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Header({ columnsNames }) {
   // console.log('render Header');
 

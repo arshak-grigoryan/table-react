@@ -1,6 +1,5 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
-
 import Loader from './components/Loader';
 
 import './styles.css';

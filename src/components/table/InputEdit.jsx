@@ -1,5 +1,4 @@
 import { KEY_CODE } from '../../constants';
-
 import useOutsideClick from '../../hooks/useOutSideClick';
 
 const InputEdit = ({ id, title, onKeyPressEditTitle, setIsEdit }) => {

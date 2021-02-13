@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Pagination from '../Pagination/Pagination1';
 
 function Footer({ columnsNames, currentPage, dataLength, onPageChange }) {

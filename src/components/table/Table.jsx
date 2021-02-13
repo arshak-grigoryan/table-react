@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 import useMount from '../../hooks/useMount';
-// import useUpdate from '../../hooks/useUpdate';
-
 import { URL, COLUMS, PAGE_ROW_COUNT } from '../../constants';
-
 import makeFetch from '../../fetch/makeFetch';
 import Loader from '../Loader';
 import getColumnsNames from './helpers/getColumnsNames';
-
 import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
-
 import './table.scss';
 
 // const Body = lazy(() => import('./Body'));

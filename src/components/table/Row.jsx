@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
 import { SLICE_LENG } from '../../constants';
-
 import ParagraphSliceable from './ParagraphSliceable';
 import InputEdit from './InputEdit';
 

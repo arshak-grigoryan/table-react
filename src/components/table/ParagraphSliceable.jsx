@@ -1,5 +1,3 @@
-import React from 'react';
-
 import useTextSlice from '../../hooks/useTextSlice';
 
 function ParagraphSliceable({ string, leng }) {

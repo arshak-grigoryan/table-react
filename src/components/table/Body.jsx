@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Row from './Row';
 
 function Body({ visibleData, ...props }) {
