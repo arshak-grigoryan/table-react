@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useMount from '../../hooks/useMount';
 import { URL, COLUMS, PAGE_ROW_COUNT } from '../../constants';
 import makeFetch from '../../fetch/makeFetch';
-import Loader from '../Loader';
+import Skeleton from '../Skeleton';
 import getColumnsNames from './helpers/getColumnsNames';
 import Header from './Header';
 import Body from './Body';
@@ -14,7 +14,6 @@ import './table.scss';
 function Table({ errorMessage }) {
   const [data, setData] = useState([]);
   const [columnsNames, setColumnsNames] = useState([]);
-  const [visibility, setVisibility] = useState(false);
   const [error, setError] = useState(false);
 
   const [startRowIndex, setStartRowIndex] = useState(0);
@@ -26,8 +25,8 @@ function Table({ errorMessage }) {
   );
 
   useMount(() => {
+    // timeout is for Skeleton view
     setTimeout(() => {
-      // for Loader view
       (async () => {
         const res = await makeFetch(URL);
         if (!Array.isArray(res)) {
@@ -41,9 +40,8 @@ function Table({ errorMessage }) {
         );
         setData(res);
         setColumnsNames(colNames);
-        setVisibility(true);
       })();
-    }, 0);
+    }, 1000);
   });
 
   // useUpdate(() => {
@@ -79,7 +77,7 @@ function Table({ errorMessage }) {
 
   // console.log('render table');
 
-  return visibility ? (
+  return dataLength ? (
     <div className="table">
       <Header columnsNames={columnsNames} />
       <Body
@@ -97,7 +95,7 @@ function Table({ errorMessage }) {
       />
     </div>
   ) : (
-    <Loader />
+    <Skeleton />
   );
 }
 

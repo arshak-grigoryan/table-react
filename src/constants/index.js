@@ -7,7 +7,7 @@ export const COLUMS = {
   body: 'body',
   delete: 'delete',
 };
-export const PAGE_ROW_COUNT = 5;
+export const PAGE_ROW_COUNT = 15;
 export const SLICE_LENG = 40;
 export const KEY_CODE = {
   enter: 13,

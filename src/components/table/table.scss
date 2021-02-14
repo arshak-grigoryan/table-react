@@ -23,6 +23,8 @@
   margin: auto;
   @include headerFooter();
   .tbody {
+    height: calc(100vh - 90px - 45px - 45px - 70px - 90px);
+    overflow-y: auto;
     @include row();
     .tr:nth-child(odd) {
       background-color: $oddChildColor;
