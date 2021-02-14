@@ -1,8 +1,8 @@
-import { PAGE_ROW_COUNT } from '../../constants';
+// import { rowPerPage } from '../../constants';
 
-function Pagination({ dataLength, currentPage, onPageChange }) {
+function Pagination({ dataLength, currentPage, onPageChange, rowPerPage }) {
   const pageButtonsCount = 5;
-  const pageCount = Math.ceil(dataLength / PAGE_ROW_COUNT);
+  const pageCount = Math.ceil(dataLength / rowPerPage);
   const notFull = pageCount < pageButtonsCount;
   const isFromStart = currentPage <= Math.ceil(pageButtonsCount / 2);
   const isFromEnd = currentPage >= Math.ceil(pageCount - pageButtonsCount / 2);

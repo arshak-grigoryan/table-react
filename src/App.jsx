@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 import Loader from './components/Loader';
-// import Table from './components/table/Table';
 import './styles.css';
 
 const debaunce = () =>
@@ -10,7 +9,7 @@ const debaunce = () =>
     const timerId = setTimeout(() => {
       resolve();
       clearTimeout(timerId);
-    }, 1000);
+    }, 0);
   });
 
 const Table = lazy(async () => {

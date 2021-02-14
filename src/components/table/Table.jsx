@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useMount from '../../hooks/useMount';
-import { URL, COLUMS, PAGE_ROW_COUNT } from '../../constants';
+import { URL, COLUMS } from '../../constants';
 import makeFetch from '../../fetch/makeFetch';
 import Skeleton from '../Skeleton';
 import getColumnsNames from './helpers/getColumnsNames';
@@ -12,6 +12,7 @@ import './table.scss';
 // const Body = lazy(() => import('./Body'));
 
 function Table({ errorMessage }) {
+  const [rowPerPage, setRowPerPage] = useState(15);
   const [data, setData] = useState([]);
   const [columnsNames, setColumnsNames] = useState([]);
   const [error, setError] = useState(false);
@@ -21,7 +22,7 @@ function Table({ errorMessage }) {
 
   const dataLength = data.length;
   const visibleData = data.filter(
-    (_, i) => i >= startRowIndex && i < startRowIndex + PAGE_ROW_COUNT
+    (_, i) => i >= startRowIndex && i < startRowIndex + rowPerPage
   );
 
   useMount(() => {
@@ -41,7 +42,7 @@ function Table({ errorMessage }) {
         setData(res);
         setColumnsNames(colNames);
       })();
-    }, 1000);
+    }, 0);
   });
 
   // useUpdate(() => {
@@ -53,7 +54,7 @@ function Table({ errorMessage }) {
     setData((prevData) => prevData.filter(({ id }) => id !== itemId));
     setCurrentPage((page) => {
       if (visibleData.length - 1 === 0) {
-        setStartRowIndex((page - 1) * PAGE_ROW_COUNT - PAGE_ROW_COUNT);
+        setStartRowIndex((page - 1) * rowPerPage - rowPerPage);
         return page - 1;
       }
       return page;
@@ -69,7 +70,7 @@ function Table({ errorMessage }) {
   };
 
   const onPageChange = (page) => {
-    setStartRowIndex(page * PAGE_ROW_COUNT - PAGE_ROW_COUNT);
+    setStartRowIndex(page * rowPerPage - rowPerPage);
     setCurrentPage(page);
   };
 
@@ -92,6 +93,8 @@ function Table({ errorMessage }) {
         dataLength={dataLength}
         onPageChange={onPageChange}
         currentPage={currentPage}
+        rowPerPage={rowPerPage}
+        setRowPerPage={setRowPerPage}
       />
     </div>
   ) : (
