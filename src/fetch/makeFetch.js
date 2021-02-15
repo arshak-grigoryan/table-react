@@ -5,6 +5,7 @@ const makeFetch = async (url) => {
     return data;
   } catch (err) {
     console.error(err);
+    return err;
   }
 };
 

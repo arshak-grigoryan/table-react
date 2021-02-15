@@ -1,23 +1,21 @@
 import { Component } from 'react';
 
 class ErrorBoundary extends Component {
-  state = {
-    error: false,
-  };
+  state = { error: null, errorInfo: null };
 
-  static getDerivedStateFromError(error) {
-    console.log(error, 'static');
-    return { error: true };
-  }
-
-  componentDidCatch(error, info) {
-    console.log(error, info, 'catch');
+  componentDidCatch(error, errorInfo) {
+    // console.log(error, errorInfo, 'catch');
+    this.setState({
+      error,
+      errorInfo,
+    });
   }
 
   render() {
-    const { error } = this.state;
-    const { fallback, children } = this.props;
-    return error ? fallback : children;
+    if (this.state.errorInfo) {
+      return <div>Component Crashed!</div>;
+    }
+    return this.props.children;
   }
 }
 

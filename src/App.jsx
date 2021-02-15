@@ -21,20 +21,15 @@ const Table = lazy(async () => {
 });
 
 function App() {
-  // console.log('render App');
+  // console.log('App');
 
   return (
     <div className="App">
-      <Suspense fallback={<Loader />}>
-        <ErrorBoundary fallback={<div>Component Crashed!</div>}>
-          <Table errorMessage="err appears here" />
-        </ErrorBoundary>
-      </Suspense>
-      {/* <ErrorBoundary fallback={<div>Component Crashed!</div>}>
+      <ErrorBoundary>
         <Suspense fallback={<Loader />}>
-          <Table errorMessage="err appears here" />
+          <Table />
         </Suspense>
-      </ErrorBoundary> */}
+      </ErrorBoundary>
     </div>
   );
 }

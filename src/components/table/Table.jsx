@@ -9,14 +9,11 @@ import Body from './Body';
 import Footer from './Footer';
 import './table.scss';
 
-// const Body = lazy(() => import('./Body'));
-
-function Table({ errorMessage }) {
+function Table() {
   const [rowPerPage, setRowPerPage] = useState(15);
   const [data, setData] = useState([]);
   const [columnsNames, setColumnsNames] = useState([]);
-  const [error, setError] = useState(false);
-
+  const [isFetched, setIsFetched] = useState(false);
   const [startRowIndex, setStartRowIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -31,7 +28,7 @@ function Table({ errorMessage }) {
       (async () => {
         const res = await makeFetch(URL);
         if (!Array.isArray(res)) {
-          setError(true);
+          setIsFetched(true);
           return;
         }
         const colNames = await getColumnsNames(
@@ -41,6 +38,7 @@ function Table({ errorMessage }) {
         );
         setData(res);
         setColumnsNames(colNames);
+        setIsFetched(true);
       })();
     }, 0);
   });
@@ -74,11 +72,13 @@ function Table({ errorMessage }) {
     setCurrentPage(page);
   };
 
-  if (error) throw new Error(errorMessage);
+  // console.log('Table');
 
-  // console.log('render table');
+  if (isFetched && !dataLength) {
+    throw new Error('asddasdv');
+  }
 
-  return dataLength ? (
+  return isFetched ? (
     <div className="table">
       <Header columnsNames={columnsNames} />
       <Body
