@@ -23,8 +23,11 @@
   margin: auto;
   @include headerFooter();
   .tbody {
-    height: calc(100vh - 90px - 45px - 45px - 120px - 90px);
+    height: calc(100vh - 90px - 45px - 45px - 120px - 90px - 4px);
     overflow-y: auto;
+    @media (max-width: $breakpoint-sm) {
+      height: calc(100vh - 124px - 121px - 4px);
+    }
     @include row();
     .tr:nth-child(odd) {
       background-color: $oddChildColor;

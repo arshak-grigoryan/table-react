@@ -18,6 +18,7 @@
       padding: $mainPadding;
       @media (max-width: $breakpoint-sm) {
         width: 80% !important;
+        padding: $mainPadding / 2;
       }
       p {
         margin: 0;
@@ -54,5 +55,13 @@
       }
     }
     @include row();
+  }
+  .tfooter {
+    border-top: 2px solid $tableBorderColor;
+    .tr {
+      @media (max-width: $breakpoint-sm) {
+        display: none;
+      }
+    }
   }
 }
